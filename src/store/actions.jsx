@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // src/store/actions.js
 export const FETCH_JOBS_REQUEST = "FETCH_JOBS_REQUEST";
 export const FETCH_JOBS_SUCCESS = "FETCH_JOBS_SUCCESS";
@@ -17,16 +19,19 @@ export const fetchJobsFailure = (error) => ({
   payload: error,
 });
 
-export const fetchJobs = () => {
+const fetchJobs = (obj) => {
+  console.log(obj);
   return async (dispatch) => {
     dispatch(fetchJobsRequest());
     try {
+      const { limit, offset } = obj;
       const myHeaders = new Headers();
+
       myHeaders.append("Content-Type", "application/json");
 
       const body = JSON.stringify({
-        limit: 10,
-        offset: 0,
+        limit: limit,
+        offset: offset,
       });
 
       const requestOptions = {
@@ -43,10 +48,11 @@ export const fetchJobs = () => {
         throw new Error("Failed to fetch data");
       }
       const result = await response.json();
-      console.log(result.jdList);
       dispatch(fetchJobsSuccess(result.jdList));
     } catch (error) {
       dispatch(fetchJobsFailure(error.message));
     }
   };
 };
+
+export default fetchJobs;

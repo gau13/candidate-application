@@ -22,7 +22,8 @@ const FetchJobs = async (filters) => {
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
-    const result = await response.json();
+    const res = await response.json();
+    const result = res.jdList;
     console.log(result);
     return result;
   } catch (error) {
