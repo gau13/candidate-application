@@ -48,6 +48,7 @@ const fetchJobs = (obj) => {
         throw new Error("Failed to fetch data");
       }
       const result = await response.json();
+      console.log(result);
       dispatch(fetchJobsSuccess(result.jdList));
     } catch (error) {
       dispatch(fetchJobsFailure(error.message));

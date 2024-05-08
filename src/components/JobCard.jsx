@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { Card, CardContent, Typography, Button } from "@mui/material";
 import "./JobCard.css";
 
 const JobCard = ({ job }) => {
-  console.log(job);
+  // const [count, setCount] = useState(0);
+
+  // useEffect(() => {
+  //   setCount((prevCount) => prevCount + 1);
+  //   setFilteredJobs(jobs);
+  // }, [job]);
+
+  // console.log(count, { job });
   const [expanded, setExpanded] = useState(false);
 
   const experience = job.minExp !== null ? job.minExp : 0;
