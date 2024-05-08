@@ -19,7 +19,7 @@ const Jobs = () => {
   // console.log(filteredJobs);
 
   useEffect(() => {
-    dispatch(fetchJobs({ limit: 10, offset: 0 })); // Initial load with limit and offset
+    dispatch(fetchJobs({ limit: 12, offset: 0 })); // Initial load with limit and offset
   }, [dispatch]);
 
   const handleScroll = () => {
@@ -30,7 +30,7 @@ const Jobs = () => {
       return;
     // Increment offset and fetch more jobs
     setOffset((prevOffset) => prevOffset + 10); // Assuming limit is 10
-    dispatch(fetchJobs({ limit: 10, offset }));
+    dispatch(fetchJobs({ limit: 12, offset }));
   };
 
   // Add event listener to handle scrolling
